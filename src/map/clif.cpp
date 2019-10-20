@@ -10221,7 +10221,7 @@ void clif_parse_WantToConnection(int fd, struct map_session_data* sd)
 	err = clif_parse_WantToConnection_sub(fd);
 
 	if( err ){ // connection rejected
-		ShowInfo("clif_parse: Disconnecting session #%d with unknown connect packet 0x%04x(length:%d)%s\n", fd, cmd, RFIFOREST(fd), (
+		ShowInfo("clif_parse: Disconnecting session #%d with unknown connect packet 0x%04x(length:%d)%s account_id %d char_id %d\n", fd, cmd, RFIFOREST(fd), (
 				err == 1 ? "." :
 				err == 2 ? ", possibly for having an invalid account_id." :
 				err == 3 ? ", possibly for having an invalid char_id." :
@@ -10230,7 +10230,7 @@ void clif_parse_WantToConnection(int fd, struct map_session_data* sd)
 				err == 5 ? ", possibly for having an invalid client_tick." :
 				*/
 				err == 6 ? ", possibly for having an invalid sex." :
-				". ERROR invalid error code"));
+				". ERROR invalid error code"), account_id, char_id);
 		
 		WFIFOHEAD(fd,packet_len(0x6a));
 		WFIFOW(fd,0) = 0x6a;
