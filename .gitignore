@@ -127,3 +127,7 @@ Thumbs.db
 
 # CMakeFiles
 /CMakeFiles/
+src/map/battle_REMOTE_34860.cpp
+src/map/battle_LOCAL_34860.cpp
+src/map/battle_BACKUP_34860.cpp
+src/map/battle_BASE_34860.cpp

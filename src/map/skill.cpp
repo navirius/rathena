@@ -3728,7 +3728,8 @@ int64 skill_attack (int attack_type, struct block_list* src, struct block_list *
 			|| skill_id == HW_GRAVITATION
 #endif
 			|| skill_id == NPC_EVILLAND) && !shadow_flag )
-			status_fix_damage(src,bl,damage,dmg.dmotion); //Deal damage before knockback to allow stuff like firewall+storm gust combo.
+
+			status_fix_damage(src,bl,damage,dmg.dmotion, skill_id); //Deal damage before knockback to allow stuff like firewall+storm gust combo.
 		if( !status_isdead(bl) && additional_effects )
 			skill_additional_effect(src,bl,skill_id,skill_lv,dmg.flag,dmg.dmg_lv,tick);
 		if( damage > 0 ) //Counter status effects [Skotlex]
@@ -5230,8 +5231,6 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 			if( skill_area_temp[1] != bl->id && !(skill_get_inf2(skill_id)&INF2_NPC_SKILL) )
 				sflag |= SD_ANIMATION; // original target gets no animation (as well as all NPC skills)
 
-<<<<<<< HEAD
-=======
 			switch(skill_id) {
 				case SR_SKYNETBLOW:
 					if (flag&8)
@@ -5242,8 +5241,6 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 			// If a enemy player is standing next to a mob when splash Es- skill is casted, the player won't get hurt.
 			if ((skill_id == SP_SHA || skill_id == SP_SWHOO) && !battle_config.allow_es_magic_pc && bl->type != BL_MOB)
 				break;
-
->>>>>>> upstream/feature/star_emperor_soul_reaper
 			heal = (int)skill_attack(skill_get_type(skill_id), src, src, bl, skill_id, skill_lv, tick, sflag);
 			if( skill_id == NPC_VAMPIRE_GIFT && heal > 0 ) {
 				clif_skill_nodamage(NULL, src, AL_HEAL, heal, 1);

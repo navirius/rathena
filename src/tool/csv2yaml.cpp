@@ -182,14 +182,10 @@ int do_init( int argc, char** argv ){
 		return 0;
 	}
 
-<<<<<<< HEAD
 	if (!process("QUEST_DB", 1, mode_paths, "quest_db", [](const std::string &path, const std::string &name_ext) -> bool {
 		return sv_readdb(path.c_str(), name_ext.c_str(), ',', 3 + MAX_QUEST_OBJECTIVES * 2 + MAX_QUEST_DROPS * 3, 100, -1, &quest_read_db, false);
-=======
-	if (!process("MOB_AVAIL_DB", 1, guild_skill_tree_paths, "mob_avail", [](const std::string& path, const std::string& name_ext) -> bool {
-		return sv_readdb(path.c_str(), name_ext.c_str(), ',', 2, 12, -1, &mob_readdb_mobavail, false);
->>>>>>> upstream/hotfix/issue4289
-	})) {
+	}))
+	{
 		return 0;
 	}
 

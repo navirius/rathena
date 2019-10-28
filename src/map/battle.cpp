@@ -1111,6 +1111,7 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 	if (sc && sc->data[SC_MAXPAIN])
 		return 0;
 
+#ifndef RENEWAL
 	if (skill_id == PA_PRESSURE || skill_id == HW_GRAVITATION || skill_id == SP_SOULEXPLOSION)
 		return damage; //These skills bypass everything else.
 #endif
